@@ -8,9 +8,13 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @ToString
@@ -20,6 +24,7 @@ import java.util.Objects;
         @Index(columnList = "createAt"),
         @Index(columnList = "createBy")
 })
+@EntityListeners(AuditingEntityListener.class)
 @Entity
 public class Article {
 
@@ -36,6 +41,12 @@ public class Article {
 
     @Setter
     private String hashtag;  // 해쉬태그
+
+    @OrderBy("id")
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private final Set<ArticleComment> articleComment = new LinkedHashSet<>();
+
 
     @CreatedDate
     @Column(nullable = false)
@@ -68,7 +79,7 @@ public class Article {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if(!(o instanceof Article article)) return false;
+        if (!(o instanceof Article article)) return false;
         return id != null && id.equals(article.id);
     }
 
@@ -76,4 +87,5 @@ public class Article {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
