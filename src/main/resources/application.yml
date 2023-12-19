@@ -6,7 +6,8 @@ logging:
   level:
     com.guide.board: debug
     org.springframework.web.servlet: debug
-    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.type.descriptor.sql.BasicBinder: debug
+    org.springframework.transaction.interceptor: debug
 
 spring:
   datasource:
@@ -26,3 +27,7 @@ spring:
       hibernate.default_batch_fetch_size: 100
 #  h2.console.enabled: true
   sql.init.mode: always
+  data:
+    rest:
+      base-path: /api
+      detection-strategy: annotated
