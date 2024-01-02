@@ -22,7 +22,6 @@ class ArticleControllerTest {
         this.mvc = mvc;
     }
 
-//    @Disabled("구현중")
     @DisplayName("[GET] 게시글 리스트 페이지 - 정상 호출")
     @Test
     void getArticleListViewSuccess() throws Exception {
@@ -36,7 +35,6 @@ class ArticleControllerTest {
                 .andExpect(model().attributeExists("article"));
     }
 
-    @Disabled("구현중")
     @DisplayName("[GET] 게시글 상세 페이지 - 정상 호출")
     @Test
     void getArticleDetailsViewSuccess() throws Exception {
