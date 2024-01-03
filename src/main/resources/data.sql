@@ -1,3 +1,11 @@
+-- 테스트 계정
+
+insert into user_account (user_id, user_password, nickname, email, memo, create_at, create_by, modified_at, modified_by) values
+    ('uno', 'asdf1234', 'Uno', 'uno@mail.com', 'I am Uno.', now(), 'uno', now(), 'uno')
+;
+
+
+
 insert into article (title, content, hashtag, create_by, modified_by, create_at, modified_at) values
                                                                                                     ('Quisque ut erat.', 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.
 Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.
